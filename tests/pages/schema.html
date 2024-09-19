@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>wysiwyg-sceditor</title>
+    <script src="../../dist/jsoneditor.js"></script>
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+
+  </head>
+  <body>
+    <h1>Test</h1>
+    <label for="value">value</label>
+    <textarea class="value" id="value" cols="30" rows="10"></textarea>
+    <button class="get-value">Get Value</button>
+    <div class="container"></div>
+
+    <script>
+      var container = document.querySelector(".container");
+      var value = document.querySelector(".value");
+
+      var schema = {
+        type: "object",
+        additionalProperties: true,
+        definitions: {},
+      };
+
+      var editor = new JSONEditor(container, {
+        schema: schema,
+        theme: "zorse",
+        iconlib: "fontawesome4",
+      });
+
+      document
+        .querySelector(".get-value")
+        .addEventListener("click", function () {
+          value.value = JSON.stringify(editor.getValue());
+          console.log(editor.getValue());
+        });
+
+      editor.on("ready", () => {
+        editor.setValue({
+          Properties: {
+            Action: "lambda:InvokeFunction",
+            FunctionName: {
+              "Fn::GetAtt": ["S3TriggerLambdaFunction", "Arn"],
+            },
+            Principal: "s3.amazonaws.com",
+            SourceAccount: {
+              Ref: "AWS::AccountId",
+            },
+            SourceArn: {
+              "Fn::Sub": "arn:${AWS::Partition}:s3:::${NotificationBucket}",
+            },
+          },
+          Type: "AWS::Lambda::Permission",
+        });
+      });
+    </script>
+  </body>
+</html>

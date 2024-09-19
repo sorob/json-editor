@@ -1,0 +1,227 @@
+/* Apply the colors to every nth .je-child-editor-holder */
+/* Apply the colors to every nth .je-child-editor-holder under .row */
+
+
+/* Original styles */
+.je-child-editor-holder {
+  position: relative;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-top-width: 2px;
+  border-top-style: solid;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-top: 10px;
+  transform: translate(-43px, 0px);
+}
+
+.je-form-input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+.je-form-input-description {
+  display: inline-block;
+  margin: 0;
+  font-size: 0.8em;
+  font-style: italic;
+}
+.je-indented-panel {
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.je-child-editor-holder {
+  position: relative;
+  border-left-width: 4px;
+  border-left-style: solid;
+  /* padding-left: 20px; */
+  margin-left: 0;
+  margin-bottom: 15px;
+  margin-left: -4px;
+}
+.je-header-button-holder {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+.json-editor-btntype-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.json-editor-btntype-toggle:hover {
+  text-decoration: underline; /* Optional: can add hover effect */
+}
+
+.json-editor-btntype-toggle:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.je-table {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+/* Upload Editor preview image */
+.je-upload-preview img {
+  float: left;
+  margin: 0 0.5rem 0.5rem 0;
+  max-width: 100%;
+  max-height: 5rem;
+}
+.je-dropzone {
+  position: relative;
+  margin: 0.5rem 0;
+  border: 2px dashed black;
+  width: 100%;
+  height: 60px;
+  background: teal;
+  transition: all 0.5s;
+}
+.je-dropzone:before {
+  position: absolute;
+  content: attr(data-text);
+  color: rgba(0, 0, 0, 0.6);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.je-dropzone.valid-dropzone {
+  background: green;
+}
+.je-dropzone.invalid-dropzone {
+  background: red;
+}
+
+/* Level indicators */
+.je-container {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.je-level-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.je-level-bar {
+  display: flex;
+  margin-right: 10px;
+}
+
+.je-level-bar span {
+  width: 20px;
+  height: 4px;
+  margin-right: 2px;
+}
+
+.je-level-text {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.je-form-input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.je-form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.je-search-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.je-search-bar input {
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1em;
+}
+
+.je-search-bar .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+/* Define colors for each level */
+.je-level-1 { border-left-color: #4285F4; } /* Blue */
+.je-level-2 { border-left-color: #EA4335; } /* Red */
+.je-level-3 { border-left-color: #FBBC05; } /* Yellow */
+.je-level-4 { border-left-color: #34A853; } /* Green */
+.je-level-5 { border-left-color: #FF6D01; } /* Orange */
+.je-level-6 { border-left-color: #46BDC6; } /* Teal */
+.je-level-7 { border-left-color: #7B1FA2; } /* Purple */
+.je-level-8 { border-left-color: #C2185B; } /* Pink */
+
+/* Ensure the border is visible */
+.je-child-editor-holder {
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+
+/* Ensure the child editors have proper spacing and border for the levels */
+.je-child-editor-holder {
+  position: relative;
+  border-left-width: 3px;
+  border-left-style: solid;
+  margin-left: 20px; /* adjust for indentation */
+  margin-bottom: 10px;
+  padding-left: 20px; /* for spacing labels */
+}
+
+.je-form-input-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+}
+
+.je-form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.je-level-indicator {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.je-level-bar {
+  width: 20px;
+  height: 4px;
+  margin-right: 5px;
+  background-color: #888; /* placeholder color */
+}

@@ -1,4 +1,5 @@
 import { htmlTheme } from './html.js'
+import { zorseTheme } from './zorse.js'
 // import  { bootstrap2Theme } from  './bootstrap2'
 import { bootstrap3Theme } from './bootstrap3.js'
 import { bootstrap4Theme } from './bootstrap4.js'
@@ -25,5 +26,6 @@ export const themes = {
   barebones: barebonesTheme,
   // materialize: materializeTheme,
   spectre: spectreTheme,
-  tailwind: tailwindTheme
+  tailwind: tailwindTheme,
+  zorse: zorseTheme
 }

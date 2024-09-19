@@ -19,6 +19,64 @@ export class AbstractTheme {
     this.options = options
   }
 
+  applyStyles () {
+    if (this.container) {
+      const applyStyle = (el, level = 0) => {
+        if (el.classList.contains('je-child-editor-holder')) {
+          // Apply border color and margin based on level
+          el.style.borderColor = this.colors[level % this.colors.length]
+          el.style.marginLeft = `${level * 20}px` // Dynamic indentation
+          level++
+        }
+        Array.from(el.children).forEach(child => applyStyle(child, level))
+      }
+
+      // Observer to apply styles after new nodes are added
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length) {
+            Array.from(mutation.addedNodes).forEach(node => {
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                applyStyle(node)
+              }
+            })
+          }
+        })
+      })
+
+      observer.observe(this.container, { childList: true, subtree: true })
+
+      // Initial style application
+      applyStyle(this.container)
+    }
+  }
+
+  // Update level indicators
+  getLevelIndicator (path) {
+    const el = document.createElement('div')
+    el.classList.add('je-level-indicator')
+
+    const levelBar = document.createElement('div')
+    levelBar.classList.add('je-level-bar')
+
+    path.forEach((_, index) => {
+      const indicator = document.createElement('span')
+      indicator.style.backgroundColor = this.colors[index % this.colors.length]
+      indicator.style.height = '4px' // Height of level lines
+      indicator.style.width = '100%' // Extend across full width
+      levelBar.appendChild(indicator)
+    })
+
+    el.appendChild(levelBar)
+
+    const levelText = document.createElement('span')
+    levelText.textContent = `Level ${path.length}`
+    levelText.classList.add('je-level-text')
+    el.appendChild(levelText)
+
+    return el
+  }
+
   getContainer () {
     return document.createElement('div')
   }
@@ -563,10 +621,6 @@ export class AbstractTheme {
     const el = document.createElement('div')
     el.innerHTML = `<div class='tabs je-tabholder--top'></div><div class='je-tabholder--clear'></div><div class='content' id='${pName}'></div>`
     return el
-  }
-
-  applyStyles (el, styles) {
-    Object.keys(styles).forEach(i => (el.style[i] = styles[i]))
   }
 
   closest (elem, selector) {
