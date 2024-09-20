@@ -696,6 +696,8 @@ export class Validator {
   }
 
   _validateSchema (schema, value, path) {
+    if (typeof this.jsoneditor.bypassValidator === 'function' && this.jsoneditor.bypassValidator(value) === true) return []
+
     const errors = []
     path = path || this.jsoneditor.root.formname
 
@@ -986,6 +988,7 @@ export class Validator {
   }
 
   _checkType (type, value) {
+    if (typeof this.jsoneditor.bypassValidator === 'function' && this.jsoneditor.bypassValidator(value) === true) return true
     const types = {
       string: value => typeof value === 'string',
       number: value => typeof value === 'number',
@@ -995,6 +998,7 @@ export class Validator {
       object: value => value !== null && !(Array.isArray(value)) && typeof value === 'object',
       null: value => value === null
     }
+
     /* Simple types */
     if (typeof type === 'string') {
       if (types[type]) {
