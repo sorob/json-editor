@@ -14,7 +14,7 @@
   padding-left: 20px;
   padding-top: 10px;
   margin-top: 10px;
-  transform: translate(-43px, 0px);
+  /* transform: translate(-43px, 0px); */
 }
 
 .je-form-input-label {
@@ -36,15 +36,56 @@
   margin: 0;
   padding: 0;
 }
+.je-indented-panel .row {
+  margin: 0;
+  padding: 0;
+}
 .je-child-editor-holder {
   position: relative;
-  border-left-width: 4px;
+  border-left-width: 2px;
   border-left-style: solid;
-  /* padding-left: 20px; */
+  padding-left: 0px;
+  padding-top: 15px;
   margin-left: 0;
   margin-bottom: 15px;
-  margin-left: -4px;
+  margin-left: -2px;
 }
+
+.je-child-editor-holder {
+  position: relative;
+  background-image: 
+    var(--bar-1, none),
+    var(--bar-2, none),
+    var(--bar-3, none),
+    var(--bar-4, none),
+    var(--bar-5, none),
+    var(--bar-6, none),
+    var(--bar-7, none),
+    var(--bar-8, none);
+  background-repeat: no-repeat;
+  background-size: 10px 3px; /* Width and height of each bar */
+  background-position:
+    0px 5px,   /* Bar 1 */
+    calc(12px * 1) 5px,   /* Bar 2 */
+    calc(12px * 2) 5px,  /* Bar 3 */
+    calc(12px * 3) 5px,  /* Bar 4 */
+    calc(12px * 3) 5px,  /* Bar 5 */
+    calc(12px * 4) 5px,  /* Bar 6 */
+    calc(12px * 5) 5px,  /* Bar 7 */
+    calc(12px * 6) 5px   /* Bar 8 */
+}
+
+/* Define level classes to set individual bars */
+.level-0 { --bar-1: linear-gradient(#FF6D01, #FF6D01); } /* Orange */
+.level-1 { --bar-2: linear-gradient(#EA4335, #EA4335); } /* Red */
+.level-2 { --bar-3: linear-gradient(#C2185B, #C2185B); } /* Dark Pink */
+.level-3 { --bar-4: linear-gradient(#FBBC05, #FBBC05); } /* Yellow */
+.level-4 { --bar-5: linear-gradient(#34A853, #34A853); } /* Green */
+.level-5 { --bar-6: linear-gradient(#46BDC6, #46BDC6); } /* Cyan */
+.level-6 { --bar-7: linear-gradient(#4285F4, #4285F4); } /* Blue */
+.level-7 { --bar-8: linear-gradient(#7B1FA2, #7B1FA2); } /* Purple */
+
+
 .je-header-button-holder {
   display: inline-block;
   margin-left: 10px;
@@ -109,7 +150,7 @@
 /* Level indicators */
 .je-container {
   position: relative;
-  padding-left: 20px;
+  padding-left: 0;
   margin-bottom: 10px;
 }
 
@@ -191,13 +232,15 @@
 /* Ensure the child editors have proper spacing and border for the levels */
 .je-child-editor-holder {
   position: relative;
-  border-left-width: 3px;
+  border-left-width: 2px;
   border-left-style: solid;
-  margin-left: 20px; /* adjust for indentation */
+  margin-left: -2px; /* adjust for indentation */
   margin-bottom: 10px;
-  padding-left: 20px; /* for spacing labels */
+  padding-left: 0px; /* for spacing labels */
 }
-
+.je-child-editor-holder > :first-child {
+  margin-left: 10px;
+}
 .je-form-input-label {
   margin-bottom: 5px;
   font-weight: bold;

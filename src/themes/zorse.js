@@ -19,8 +19,14 @@ export class zorseTheme extends AbstractTheme {
     super(jsoneditor, options)
     this.container = null
     this.colors = [
-      '#4285F4', '#EA4335', '#FBBC05', '#34A853',
-      '#FF6D01', '#46BDC6', '#7B1FA2', '#C2185B'
+      '#FF6D01', // Orange
+      '#EA4335', // Red
+      '#C2185B', // Dark Pink
+      '#FBBC05', // Yellow
+      '#34A853', // Green
+      '#46BDC6', // Cyan
+      '#4285F4', // Blue
+      '#7B1FA2' // Purple
     ]
   }
 
@@ -110,8 +116,14 @@ export class zorseTheme extends AbstractTheme {
     levelBar.classList.add('je-level-bar')
 
     const levelColors = [
-      '#4285F4', '#EA4335', '#FBBC05', '#34A853',
-      '#FF6D01', '#46BDC6', '#7B1FA2', '#C2185B'
+      '#FF6D01', // Orange
+      '#EA4335', // Red
+      '#C2185B', // Dark Pink
+      '#FBBC05', // Yellow
+      '#34A853', // Green
+      '#46BDC6', // Cyan
+      '#4285F4', // Blue
+      '#7B1FA2' // Purple
     ]
 
     path.forEach((level, index) => {
@@ -166,6 +178,7 @@ export class zorseTheme extends AbstractTheme {
         if (el.classList.contains('je-child-editor-holder')) {
           // Apply border color based on level
           el.style.borderColor = this.colors[level % this.colors.length]
+          el.classList.add('level-' + level)
           level++
         }
         Array.from(el.children).forEach(child => applyStyle(child, level))
