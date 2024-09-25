@@ -10,11 +10,14 @@
 .je-modal {
   background-color: white;
   border: 1px solid black;
-  box-shadow: 3px 3px black;
   position: absolute;
   z-index: 10;
+  right: 5px;
+  padding: 5px;
 }
-
+.je-modal * {
+  max-width: calc(100% - 10px);
+}
 .je-infobutton-icon {
   font-size: 16px;
   font-weight: bold;
