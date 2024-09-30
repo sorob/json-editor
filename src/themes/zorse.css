@@ -268,3 +268,7 @@
   margin-right: 5px;
   background-color: #888; /* placeholder color */
 }
+
+.highlight {
+  background-color: yellow;
+}
