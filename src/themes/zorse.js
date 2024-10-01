@@ -122,6 +122,8 @@ export class zorseTheme extends AbstractTheme {
   }
 
   searchEditorElements (element, searchTerm) {
+    // eslint-disable-next-line no-console
+    console.log('searching', element, searchTerm)
     if (!element) return false
 
     let elementMatches = false
@@ -165,7 +167,7 @@ export class zorseTheme extends AbstractTheme {
       elementMatches = true
 
       // Highlight matching text in value
-      if (valueElement) {
+      if (valueElement && valueElement.classList && valueElement.id !== 'json-editor-search') {
         valueElement.classList.add('highlight')
       }
     } else {
@@ -196,12 +198,24 @@ export class zorseTheme extends AbstractTheme {
 
     // Show or hide the element based on whether it or any child matches
     if (matches || lowerSearchTerm === '') {
-      element.style.display = ''
+      this.setChildEditorHolderVisibility(element, true)
     } else {
-      // element.style.display = 'none'
+      this.setChildEditorHolderVisibility(element, false)
     }
 
     return matches
+  }
+
+  setChildEditorHolderVisibility (element, visible) {
+    // loop upwards to find the child editor holder
+    let parent = element
+    while (parent && parent !== document && !!parent.classList && !parent.classList.contains('je-child-editor-holder')) {
+      parent = parent.parentNode
+    }
+    if (parent && parent.classList && parent.classList.contains('je-child-editor-holder')) {
+      // set opacity to 0 if not visible
+      parent.style.opacity = visible ? 1 : 0.5
+    }
   }
 
   getHeaderButtonHolder () {
