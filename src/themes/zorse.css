@@ -270,7 +270,7 @@
 }
 
 .highlight {
-  background-color: yellow;
+  background-color: rgb(255 226 0);
 }
 
 #json-editor-search{
@@ -279,4 +279,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px;  
+}
+
+.je-child-editor-holder {
+  transition: all 0.3s;
 }
